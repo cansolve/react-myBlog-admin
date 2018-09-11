@@ -1,4 +1,4 @@
-# react-manage
+# react-manage(更新中)
 ## 前端技术
 
 ### 本地必须要有[node](https://nodejs.org/en/download/)和[git](https://git-scm.com/)环境
