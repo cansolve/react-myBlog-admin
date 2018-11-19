@@ -13,4 +13,8 @@
     max-width: 1000px;
 }
 
+.navbar-fixed-top+.main-container {
+    padding-top: 45px;
+}
+
 @import './module';
