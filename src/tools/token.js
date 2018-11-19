@@ -1,8 +1,8 @@
 /*
   获取token
 */
-import Cookie from '../../tools/cookie';
-import Storage from '../../tools/storage';
+import Cookie from './cookie';
+import Storage from './storage';
 
 import Fetch from './fetch';
 

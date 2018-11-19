@@ -4,12 +4,14 @@ import {
     Router,
     Route,
     hashHistory,
-} from 'react-router';
+} from 'react-router-dom';
 import 'babel-polyfill';
+
 /*
 	前端界面的css样式引用
 */
 
+import '../../assets/css/index.css';
 import '../../assets/css/bootstrap.min.css';
 import '../../assets/css/jquery.gritter.css';
 import '../../assets/css/ace.min.css';
@@ -17,7 +19,6 @@ import '../../assets/css/ace-rtl.min.css';
 import '../../assets/css/ace-skins.min.css';
 
 
-import '../../assets/scss/index.scss';
 /*cookie引入*/
 import Cookie from '../tools/cookie';
 
@@ -33,22 +34,7 @@ import RouterNav from './router';
 
 
 async function init() {
-    // if (Config.isUap) {
-    // 	if (!Cookie.get('token') || window.location.search.search('ticket') > -1) {
-    // 		await Token();
-    // 	}
-
-    // 	let user = await User();
-
-    // 	//判断是否用户已登录还是过期了
-    // 	if (!user.succeed) {
-    // 		return;
-    // 	}
-
-    // 	//获取菜单
-    // 	await Tree();
-    // }
-
-    render( <RouterNav /> ,document.getElementById('app'));
+    
+    render( < RouterNav / > , document.getElementById('app'));
 }
 export default init();

@@ -36,6 +36,7 @@ class ChildrenLi extends React.Component {
 class Left extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       min: 0,
       display: ''
@@ -85,7 +86,7 @@ class Left extends React.Component {
       iconClass = 'icon-double-angle-right'
     }
     else {
-      minClass = 'sidebar ' + this.props.display;
+      minClass = 'sidebar ' + this.props.display+this.props.leftFixed;
       iconClass = 'icon-double-angle-left'
     }
     let nav = this.props.nav || [];

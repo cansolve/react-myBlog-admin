@@ -1,5 +1,5 @@
 import React from 'react';
-import Dialog from '../../../module/dialog';
+import Dialog from '../../module/dialog';
 import Dispatch from '../../dispatch';
 
 

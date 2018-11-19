@@ -1,4 +1,4 @@
-import Cache from '../../tools/cache';
+import Cache from '../tools/cache';
 
 const initParam = {
     conditions: {},

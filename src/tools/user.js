@@ -2,7 +2,7 @@
 	获取用户信息
 */
 
-import Cache from '../../tools/cache';
+import Cache from './cache';
 
 import Fetch from './fetch';
 

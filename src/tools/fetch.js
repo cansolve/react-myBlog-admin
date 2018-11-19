@@ -1,9 +1,7 @@
-import Cookie from '../../tools/cookie';
-import Host from '../../tools/host';
-import Storage from '../../tools/storage';
+import Cookie from './cookie';
+import Host from './host';
+import Storage from './storage';
 
-/*配置引入*/
-import Config from '../../config';
 
 function serialize(obj) {
     var result = [];

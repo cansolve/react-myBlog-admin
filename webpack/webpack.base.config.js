@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+require('babel-polyfill');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -9,11 +10,13 @@ module.exports = {
         main: path.join(__dirname, "../src/index.js"),
         common: ['react', 'react-dom']
     },
+
     output: {
         path: path.join(__dirname, "../dist"),
         filename: "./src/[name].js",
 
     },
+
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.less', 'sass', 'scss']
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../../../assets/images/user.jpg'
+import img from '../../../assets/images/user.jpg'
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class Header extends React.Component {
   componentWillUnmount() { }
   render() {
     return (
-      <div className="navbar navbar-default">
+      <div className="navbar navbar-default navbar-fixed-top">
         <div className="navbar-container">
           <div className="navbar-header pull-left">
             <a href="#" className="navbar-brand">

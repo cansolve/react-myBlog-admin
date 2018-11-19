@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Gritter from '../../../module/gritter';
+import Gritter from '../../module/gritter';
 
 import Header from './header';
 import Left from './left';
@@ -15,7 +15,9 @@ export default class Common extends React.Component {
       isPermissions: true,
       sta: false,
       idActive: false,
-      parentClass: ''
+      leftFixed:false,
+      parentClass: '',
+      childClass:''
     }
   }
   mediaChange(event) {
@@ -35,7 +37,22 @@ export default class Common extends React.Component {
       parentClass: this.state.idActive == false ? 'rtl' : ''
     })
   }
-  componentDidMount() { }
+  navbarFixed(){
+
+  }
+  sidebarFixed(){
+    this.setState({
+      leftFixed: !this.state.leftFixed,
+      childClass: this.state.leftFixed == false ? 'sidebar-fixed' : ''
+    })
+  }
+  breadFixed(){
+
+  }
+  componentDidMount() {
+    // console.log("%c%s","color: red; background: yellow; font-size: 18px;","email: tongxiang608@163.com");
+    // console.log("%c%s","color: red; background: yellow; font-size: 18px;","github: github.com/cansolve");
+  }
   componentWillReceiveProps(nextProps) { }
   render() {
     return (
@@ -46,7 +63,7 @@ export default class Common extends React.Component {
             <a className={'menu-toggler ' + this.state.display} id="menu-toggler" href="#" onClick={this.mediaChange.bind(this)}>
               <span className="menu-text"></span>
             </a>
-            <Left display={this.state.display} {...this.props} />
+            <Left display={this.state.display} {...this.props} leftFixed={this.state.childClass}/>
             <div className="main-content">
               <Crumbs {...this.props} />
               <div className="page-content clearfix">
@@ -58,14 +75,30 @@ export default class Common extends React.Component {
                 </div>
 
                 <div className="ace-settings-box open" style={{ 'display': this.state.sta == true ? 'inline-block' : 'none' }}>
+                  
                   <div>
-                    <span>&nbsp; Choose Skin</span>
-                  </div>
-                  <div>
-                    <input type="checkbox" className="ace ace-checkbox-2" id="ace-settings-navbar"
+                    <input type="checkbox" className="ace ace-checkbox-2"
                       checked={this.state.idActive}
                       onChange={this.changeCheckBox.bind(this)} />
-                    <label className="lbl" htmlFor="ace-settings-navbar"> Right To Left (rtl)</label>
+                    <label className="lbl" htmlFor="ace-settings-navbar"> 侧边栏切换到右侧</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" className="ace ace-checkbox-2"
+                      checked={this.state.idActive}
+                      onChange={this.navbarFixed.bind(this)} />
+                    <label className="lbl" htmlFor="ace-settings-navbar"> 固定导航</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" className="ace ace-checkbox-2"
+                      checked={this.state.leftFixed}
+                      onChange={this.sidebarFixed.bind(this)} />
+                    <label className="lbl" htmlFor="ace-settings-navbar"> 固定侧边栏</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" className="ace ace-checkbox-2"
+                      checked={this.state.idActive}
+                      onChange={this.breadFixed.bind(this)} />
+                    <label className="lbl" htmlFor="ace-settings-navbar"> 固定面包屑</label>
                   </div>
                 </div>
               </div>

@@ -5,21 +5,21 @@ import Dispatch from '../../dispatch';
 import Common from '../common/common';
 
 
-import SelectSearch from '../../../module/selectSearch';
-import { UTCToTime, TimeToUTC } from '../../../tools/utc';
-import DatePicker from '../../../module/datePicker';
-import Upload from '../../../module/upload';
-import Pagination from '../../../module/pagination';
-import SelectMultiple from '../../../module/selectMultiple';
-import TreeView from '../../../module/treeview';
-import Validation from '../../../module/validation';
-import Multicolumn from '../../../module/multicolumn';
+import SelectSearch from '../../module/selectSearch';
+import { UTCToTime, TimeToUTC } from '../../tools/utc';
+import DatePicker from '../../module/datePicker';
+import Upload from '../../module/upload';
+import Pagination from '../../module/pagination';
+import SelectMultiple from '../../module/selectMultiple';
+import TreeView from '../../module/treeview';
+import Validation from '../../module/validation';
+import Multicolumn from '../../module/multicolumn';
 
 // import Table from './table';
-import Table from '../../../module/table';
+import Table from '../../module/table';
 import ConditionList from './conditionList';
 import DialogDemo from './dialog';
-import DetailTip from '../../../module/detailTip';
+import DetailTip from '../../module/detailTip';
 
 
 
