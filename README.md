@@ -3,10 +3,11 @@
 
 ### 本地必须要有[node](https://nodejs.org/en/download/)和[git](https://git-scm.com/)环境
 
-- webpack 
+- webpack 4
 - bootstrap + ace
-- react
-- redux
+- react 16
+- react-router 4
+- redux 3
 - babel
 - promise
 - async +  await
@@ -44,26 +45,23 @@ demo //项目名
   -- asserts  //静态资源目录，css,font,image
   -- public  //html模板文件
   -- webpack  //webpack配置文件
-     -- webpack.base.config.js  //公用
-     -- webpack.dev.config.js  //开发环境
-     -- webpack.prod.config.js  //生产环境
+    -- webpack.base.config.js  //公用
+    -- webpack.dev.config.js  //开发环境
+    -- webpack.prod.config.js  //生产环境
   -- src  //js编写文件
-     -- js
-        -- index.js  // 初始化js
-        -- module  // 基础UI模块目录
-        -- tools   // js方法工具库目录
-        -- controller  // 开发生成目录（后续的开发者所开发的文件都放在这里面）
-           -- action     // action 目录
-           -- component  // 对应的模块 目录
-           -- dispatch   // dispatch 目录
-           -- reducers   // reducers 目录
-           -- index.js   // 前端渲染
-           -- router.js  // 前端路由
-           -- store.js   // store 文件 
+      -- index.js  // 初始化js
+      -- module  // 基础UI模块目录
+      -- tools   // js方法工具库目录
+      -- action     // action 目录
+      -- component  // 对应的模块 目录
+      -- dispatch   // dispatch 目录
+      -- reducers   // reducers 目录
+      -- index.js   // 前端渲染
+      -- router.js  // 前端路由
+      -- store.js   // store 文件 
   -- .babelr   //babel的校验文件
   -- .eslintrc  //js编写校验配置文件
-  -- .gitignore  //过滤文件
-  -- java.config.js  //java环境下生成对应的编译文件的配置文件
+  -- .gitignore  //git过滤文件
   -- package.json  //node 安装包文件
   -- README.md   //readme 文件
  
@@ -97,14 +95,14 @@ http-server -c-1
 #### 生产开发
 生产环境中开发监听对应的文件修改
 ```
-npm run start
+npm start
 ```
 
 ### 前端发布部署
 
 压缩生产对应的线上文件，生产 `html`  `css`  `image`  `font`  `js`  文件
 ```
-npm run build
+npm build
 ```
 
 -----------------------------
