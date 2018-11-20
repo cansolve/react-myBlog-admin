@@ -17,7 +17,8 @@ export default class Common extends React.Component {
       idActive: false,
       leftFixed:false,
       parentClass: '',
-      childClass:''
+      childClass:'',
+      bName:''
     }
   }
   mediaChange(event) {
@@ -49,11 +50,20 @@ export default class Common extends React.Component {
   breadFixed(){
 
   }
+  getName(val){
+    this.setState({
+      bName:val
+    })
+    console.log(val)
+  }
   componentDidMount() {
     // console.log("%c%s","color: red; background: yellow; font-size: 18px;","email: tongxiang608@163.com");
     // console.log("%c%s","color: red; background: yellow; font-size: 18px;","github: github.com/cansolve");
+    
   }
-  componentWillReceiveProps(nextProps) { }
+  componentWillReceiveProps(nextProps) {
+    
+   }
   render() {
     return (
       <div className={this.state.parentClass}>
@@ -63,9 +73,9 @@ export default class Common extends React.Component {
             <a className={'menu-toggler ' + this.state.display} id="menu-toggler" href="#" onClick={this.mediaChange.bind(this)}>
               <span className="menu-text"></span>
             </a>
-            <Left display={this.state.display} {...this.props} leftFixed={this.state.childClass}/>
+            <Left display={this.state.display} {...this.props} leftFixed={this.state.childClass} getName= {this.getName.bind(this)}/>
             <div className="main-content">
-              <Crumbs {...this.props} />
+              <Crumbs bName = {this.state.bName}/>
               <div className="page-content clearfix">
                 {this.props.children}
               </div>

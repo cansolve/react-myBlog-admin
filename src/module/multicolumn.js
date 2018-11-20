@@ -133,8 +133,8 @@ export default class Multicolumn extends React.Component {
     })
   }
   render() {
-    console.log('右侧数据：' + JSON.stringify(this.state.data));
-    console.log('左侧数据：' + JSON.stringify(this.state.list));
+    // console.log('右侧数据：' + JSON.stringify(this.state.data));
+    // console.log('左侧数据：' + JSON.stringify(this.state.list));
     var size =  {
       width: this.props.size[0],
       height: this.props.size[1]

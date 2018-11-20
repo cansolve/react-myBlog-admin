@@ -1,25 +1,27 @@
 import React from 'react';
 import _ from 'lodash';
-import FontAwesome from 'react-fontawesome';
 
 class ChildrenLi extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      name:''
+    }
+  }
+  setBreadname(name){
+    this.props.getBreadname(name);
   }
   render() {
     let styleCss = this.props.status ? { display: 'block' } : { display: 'none' };
-
     return (
       <ul className="submenu" style={styleCss}>
         {
           this.props.data.map((items, i) => {
-
-            let reg = new RegExp('^#\/' + items.url + '(\/.+)*\\?');
+            let reg = new RegExp('^#\/' + items.url );
             let classValue = reg.test(window.location.hash) ? 'active' : '';
-
             return (
-              <li key={i} className={classValue}>
-                <a href={'#/' + items.url}>
+              <li key={i} className={classValue} onClick={this.setBreadname.bind(this,items.name)}>
+                <a href={'#/' + items.url} >
                   <i className="menu-icon fa fa-caret-right"></i>
                   {items.name}
                 </a>
@@ -36,10 +38,9 @@ class ChildrenLi extends React.Component {
 class Left extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       min: 0,
-      display: ''
+      display: '',
     }
   }
   handleToggle(event) {
@@ -76,6 +77,9 @@ class Left extends React.Component {
       min: this.state.min ? 0 : 1
     });
   }
+  getBreadname(name){
+    this.props.getName(name);
+  }
   render() {
     let _self = this,
       minClass,
@@ -90,15 +94,13 @@ class Left extends React.Component {
       iconClass = 'icon-double-angle-left'
     }
     let nav = this.props.nav || [];
-    
     return (
       <div className={minClass}>
-        <ul className="nav nav-list">
-          {
-            nav.map((items, i) => {
+      <ul className="nav nav-list">
+      {
+        nav.map((items, i) => {
               let reg = new RegExp('^#\/' + items.url);
               let classValue = reg.test(window.location.hash) ? 'open active' : '';
-
               if (items.children && items.children.length > 0) {
                 return (
                   <li key={i} className={classValue}>
@@ -107,7 +109,7 @@ class Left extends React.Component {
                       <span className="menu-text"> {items.name} </span>
                       <b className="arrow icon-angle-down"></b>
                     </a>
-                    <ChildrenLi data={items.children} status={classValue} />
+                    <ChildrenLi data={items.children} status={classValue} getBreadname={this.getBreadname.bind(this)}/>
                   </li>
                 )
               }

@@ -10,16 +10,13 @@ const initParam = {
 const initialState = {
     user: {},
     loading: false,
-    data: [],
     count: 0,
     param: Object.assign({}, initParam),
     dialog: '',
     gritter: {},
-    rspdata: {},
-    active: [],
-    excelDocLists: [],
     nav: [{
             name: "组建库",
+            url: "",
             children: [
                 { name: "全端幻灯片", url: "swiper" },
                 { name: "活动转盘抽奖", url: "rotate" },
@@ -28,7 +25,7 @@ const initialState = {
                 { name: "弹窗", url: "popup" },
             ]
         },
-        { name: "代码规范" }
+        { name: "代码规范", url: "" }
     ],
 };
 
@@ -37,10 +34,8 @@ const functions = {
         return {
             ...state,
             param: Object.assign({}, initParam),
-            data: [],
             count: 0,
             url: '',
-            rspdata: {},
             user: Cache.get('user') || {},
             nav: Cache.get('tree') || []
         };
@@ -89,7 +84,6 @@ const functions = {
     loadData: (state, action) => {
         return {
             ...state,
-            rspdata: action.result.content,
             count: action.result.content.count,
             data: action.result.content.list,
         };

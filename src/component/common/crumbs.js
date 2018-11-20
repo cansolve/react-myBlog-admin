@@ -5,27 +5,8 @@ class Crumbs extends React.Component {
     super(props);
     
   }
-  componentDidMount() {
-    // var _this = this;
-    // (async function () {
-    //   let val = await Fetch({
-    //     url: '/api/listAllProject',
-    //     method: 'POST',
-    //     param: {
-    //       currentPage: '0'
-    //     }
-    //   });
-    //   if (val.msg.code == '0000') {
-    //     _this.setState({
-    //       projects: val.content.list
-    //     })
-    //   } else {
-
-    //   }
-    // })()
-  }
-  
   render() {
+    console.log(this.props)
     return (
       <div className="breadcrumbs">
         <ul className="breadcrumb">
@@ -34,7 +15,7 @@ class Crumbs extends React.Component {
             <a href="#">首页</a>
           </li>
           <li className="active">
-            {this.props.route ? this.props.route.name : ''}
+            {this.props.bName ? this.props.bName : ''}
           </li>
         </ul>
       </div>
