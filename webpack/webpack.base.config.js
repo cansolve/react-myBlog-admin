@@ -14,7 +14,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, "../dist"),
-        filename: "./src/[name].js",
+        filename: "./assets/js/[name].js",
 
     },
 
@@ -47,22 +47,18 @@ module.exports = {
             },
             {
                 test: /\.(scss|sass)$/,
-                use: ExtractTextPlugin.extract({
-                    // 注意 1
-                    fallback: {
-                        loader: "style-loader"
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "style-loader" // 将 JS 字符串生成为 style 节点
                     },
-                    use: [{
-                            loader: "css-loader",
-                            options: {
-                                minimize: true
-                            }
-                        },
-                        {
-                            loader: "sass-loader"
-                        }
-                    ]
-                })
+                    {
+                        loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+                    },
+                    {
+                        loader: "sass-loader" // 将 Sass 编译成 CSS
+                    }
+                ]
 
             },
 
@@ -75,9 +71,9 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        // limit: 30,
-                        // outputPath: './assets/images/',
-                        // name: '[name].[ext]?[hash]',
+                        limit: 30,
+                        outputPath: './assets/images/',
+                        name: '[name].[ext]?[hash]',
                     }
                 }]
             },
@@ -94,6 +90,7 @@ module.exports = {
             }
         ]
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
@@ -106,10 +103,6 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: "./assets/images/",
             to: "./assets/images/"
-        }]),
-        new ExtractTextPlugin({
-            filename: "[name].min.css",
-            allChunks: false // 注意 2
-        })
+        }])
     ]
 }
