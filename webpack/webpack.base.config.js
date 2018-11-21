@@ -4,6 +4,7 @@ require('babel-polyfill');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -34,7 +35,7 @@ module.exports = {
                 test: /\.(js|jsx)?$/,
                 exclude: /(node_modules)/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0',
                     options: {
                         cacheDirectory: true //缓存  
                     }
@@ -46,14 +47,22 @@ module.exports = {
             },
             {
                 test: /\.(scss|sass)$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader" // translates CSS into CommonJS
-                    }, {
-                        loader: "sass-loader" // compiles Sass to CSS
-                    }
-                ]
+                use: ExtractTextPlugin.extract({
+                    // 注意 1
+                    fallback: {
+                        loader: "style-loader"
+                    },
+                    use: [{
+                            loader: "css-loader",
+                            options: {
+                                minimize: true
+                            }
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ]
+                })
 
             },
 
@@ -97,6 +106,10 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: "./assets/images/",
             to: "./assets/images/"
-        }])
+        }]),
+        new ExtractTextPlugin({
+            filename: "[name].min.css",
+            allChunks: false // 注意 2
+        })
     ]
 }

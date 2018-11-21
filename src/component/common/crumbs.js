@@ -7,8 +7,14 @@ class Crumbs extends React.Component {
   }
   render() {
     console.log(this.props)
+    let breadClass='';
+    if(this.props.breadFixed){
+      breadClass = 'breadcrumbs breadcrumbs-fixed'
+    }else{
+      breadClass = 'breadcrumbs'
+    }
     return (
-      <div className="breadcrumbs">
+      <div className={breadClass}>
         <ul className="breadcrumb">
           <li>
             <i className="icon-home home-icon"></i>

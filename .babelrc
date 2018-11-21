@@ -8,7 +8,8 @@
     ],
     "plugins": [
         "transform-react-jsx",
-        "transform-runtime"
+        "transform-runtime",
+        "transform-class-properties"
     ],
     "env": {
         "development": {

@@ -9,6 +9,7 @@ class ChildrenLi extends React.Component {
     }
   }
   setBreadname(name){
+    
     this.props.getBreadname(name);
   }
   render() {
@@ -78,7 +79,7 @@ class Left extends React.Component {
     });
   }
   getBreadname(name){
-    this.props.getName(name);
+    this.props.getName(name);//传向父组建
   }
   render() {
     let _self = this,

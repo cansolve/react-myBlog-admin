@@ -5,7 +5,7 @@ import Gritter from '../../module/gritter';
 import Header from './header';
 import Left from './left';
 import Crumbs from './crumbs';
-// import Loading from './loading';
+import Cache from '../../tools/cache';
 
 export default class Common extends React.Component {
   constructor(props) {
@@ -15,11 +15,14 @@ export default class Common extends React.Component {
       isPermissions: true,
       sta: false,
       idActive: false,
-      leftFixed:false,
+      leftFixed: false,
+      breadFixed: false,
       parentClass: '',
-      childClass:'',
-      bName:''
+      childClass: '',
+      breadFixed_class:'',
+      bName: ''
     }
+    Object.assign(this.state);
   }
   mediaChange(event) {
     event.preventDefault();
@@ -27,43 +30,47 @@ export default class Common extends React.Component {
       display: this.state.display ? '' : 'display'
     })
   }
-  openSetting() {
+  openSetting = () => {
     this.setState({
       sta: !this.state.sta
     })
   }
-  changeCheckBox() {
+  changeCheckBox = () => {
     this.setState({
       idActive: !this.state.idActive,
       parentClass: this.state.idActive == false ? 'rtl' : ''
     })
   }
-  navbarFixed(){
+  navbarFixed = () => {
 
   }
-  sidebarFixed(){
+  sidebarFixed = () => {
     this.setState({
       leftFixed: !this.state.leftFixed,
       childClass: this.state.leftFixed == false ? 'sidebar-fixed' : ''
     })
   }
-  breadFixed(){
-
-  }
-  getName(val){
+  breadFixed = () => {
     this.setState({
-      bName:val
+      breadFixed: !this.state.breadFixed,
+      breadFixed_class: this.state.breadFixed == false ? 'breadcrumbs-fixed' : ''
     })
-    console.log(val)
   }
+  getName(val) {
+    let _this = this;
+    _this.setState({
+      bName: val
+    })
+    console.log(_this.state);
+  }
+
   componentDidMount() {
     // console.log("%c%s","color: red; background: yellow; font-size: 18px;","email: tongxiang608@163.com");
     // console.log("%c%s","color: red; background: yellow; font-size: 18px;","github: github.com/cansolve");
-    
+
   }
   componentWillReceiveProps(nextProps) {
-    
-   }
+  }
   render() {
     return (
       <div className={this.state.parentClass}>
@@ -73,41 +80,46 @@ export default class Common extends React.Component {
             <a className={'menu-toggler ' + this.state.display} id="menu-toggler" href="#" onClick={this.mediaChange.bind(this)}>
               <span className="menu-text"></span>
             </a>
-            <Left display={this.state.display} {...this.props} leftFixed={this.state.childClass} getName= {this.getName.bind(this)}/>
+
+            {/*左侧树组建*/}
+            <Left display={this.state.display} {...this.props} leftFixed={this.state.childClass} getName={this.getName.bind(this)} />
+
             <div className="main-content">
-              <Crumbs bName = {this.state.bName}/>
+              {/*面包屑组建*/}
+              <Crumbs bName={this.state.bName} breadFixed={this.state.breadFixed}/>
+
               <div className="page-content clearfix">
                 {this.props.children}
               </div>
               <div className="ace-settings-container">
-                <div className="btn btn-app btn-xs btn-warning ace-settings-btn open" onClick={this.openSetting.bind(this)}>
+                <div className="btn btn-app btn-xs btn-warning ace-settings-btn open" onClick={this.openSetting}>
                   <i className="ace-icon fa fa-cog bigger-130"></i>
                 </div>
 
                 <div className="ace-settings-box open" style={{ 'display': this.state.sta == true ? 'inline-block' : 'none' }}>
-                  
+
                   <div>
                     <input type="checkbox" className="ace ace-checkbox-2"
                       checked={this.state.idActive}
-                      onChange={this.changeCheckBox.bind(this)} />
+                      onChange={this.changeCheckBox} />
                     <label className="lbl" htmlFor="ace-settings-navbar"> 侧边栏切换到右侧</label>
                   </div>
                   <div>
                     <input type="checkbox" className="ace ace-checkbox-2"
                       checked={this.state.idActive}
-                      onChange={this.navbarFixed.bind(this)} />
+                      onChange={this.navbarFixed} />
                     <label className="lbl" htmlFor="ace-settings-navbar"> 固定导航</label>
                   </div>
                   <div>
                     <input type="checkbox" className="ace ace-checkbox-2"
                       checked={this.state.leftFixed}
-                      onChange={this.sidebarFixed.bind(this)} />
+                      onChange={this.sidebarFixed} />
                     <label className="lbl" htmlFor="ace-settings-navbar"> 固定侧边栏</label>
                   </div>
                   <div>
                     <input type="checkbox" className="ace ace-checkbox-2"
-                      checked={this.state.idActive}
-                      onChange={this.breadFixed.bind(this)} />
+                      checked={this.state.breadFixed_class}
+                      onChange={this.breadFixed} />
                     <label className="lbl" htmlFor="ace-settings-navbar"> 固定面包屑</label>
                   </div>
                 </div>
@@ -123,7 +135,7 @@ export default class Common extends React.Component {
             />
             : ''
         }
-        
+
 
       </div>
     )
