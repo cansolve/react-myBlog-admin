@@ -17,9 +17,11 @@ export default class Common extends React.Component {
       idActive: false,
       leftFixed: false,
       breadFixed: false,
+      navbar: true,
       parentClass: '',
       childClass: '',
       breadFixed_class:'',
+      navbarFixed_class:'navbar-fixed-top',
       bName: ''
     }
     Object.assign(this.state);
@@ -42,7 +44,10 @@ export default class Common extends React.Component {
     })
   }
   navbarFixed = () => {
-
+    this.setState({
+      navbar: !this.state.navbar,
+      navbarFixed_class: this.state.navbar == false ? 'navbar-fixed-top' : ''
+    })
   }
   sidebarFixed = () => {
     this.setState({
@@ -74,7 +79,9 @@ export default class Common extends React.Component {
   render() {
     return (
       <div className={this.state.parentClass}>
-        <Header />
+        {/*头部组建*/}
+        <Header navbarFixed={this.state.navbarFixed_class}/>
+
         <div className="main-container" id="main-container">
           <div className="main-container-inner">
             <a className={'menu-toggler ' + this.state.display} id="menu-toggler" href="#" onClick={this.mediaChange.bind(this)}>
@@ -106,7 +113,7 @@ export default class Common extends React.Component {
                   </div>
                   <div>
                     <input type="checkbox" className="ace ace-checkbox-2"
-                      checked={this.state.idActive}
+                      checked={this.state.navbar}
                       onChange={this.navbarFixed} />
                     <label className="lbl" htmlFor="ace-settings-navbar"> 固定导航</label>
                   </div>

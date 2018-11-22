@@ -4,12 +4,13 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: 0
+      isShow: 0,
+      nav_fixed: this.props.navbarFixed ? 'navbar-fixed-top' : ''
     }
   }
   exit(event) { }
   changeLang(value, event) { }
-  handleChange(event) {
+  handleChange = (event) => {
     let _self = this;
     let param = this.state.isShow ? 0 : 1;
     this.setState({
@@ -28,8 +29,14 @@ class Header extends React.Component {
   componentDidMount() { }
   componentWillUnmount() { }
   render() {
+    let nav_fixed='';
+    if(this.props.navbarFixed){
+      nav_fixed = 'navbar navbar-default navbar-fixed-top'
+    }else{
+      nav_fixed = 'navbar navbar-default'
+    }
     return (
-      <div className="navbar navbar-default navbar-fixed-top">
+      <div className={nav_fixed}>
         <div className="navbar-container">
           <div className="navbar-header pull-left">
             <a href="#" className="navbar-brand">
@@ -42,7 +49,7 @@ class Header extends React.Component {
           <div className="navbar-header pull-right">
             <ul className="nav ace-nav">
               <li className={this.state.isShow ? 'light-blue open' : 'light-blue'}>
-                <a href="#" onClick={this.handleChange.bind(this)}>
+                <a href="#" onClick={this.handleChange}>
                   <img className="nav-user-photo" src={img} alt="tongxiang's Photo" />
                   <span className="user-info">
                     <small>欢迎,</small>

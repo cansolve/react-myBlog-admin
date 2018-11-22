@@ -6,7 +6,7 @@ class Crumbs extends React.Component {
     
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     let breadClass='';
     if(this.props.breadFixed){
       breadClass = 'breadcrumbs breadcrumbs-fixed'

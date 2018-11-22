@@ -88,9 +88,7 @@ class Index extends React.Component {
 
     //查看详情
     event.stopPropagation();
-
     var _self = this;
-
     function fn() {
       _self.setState({
         detailShow: false
