@@ -14,7 +14,7 @@ const webpackConfigDev = {
         hot: true,
         host: '0.0.0.0',
         inline: true,
-        port: 8088,
+        port: 8089,
     }
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev);

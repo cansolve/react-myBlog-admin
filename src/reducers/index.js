@@ -15,14 +15,11 @@ const initialState = {
     dialog: '',
     gritter: {},
     nav: [{
-            name: "组建库",
+            name: "用户管理",
             url: "",
             children: [
-                { name: "全端幻灯片", url: "swiper" },
-                { name: "活动转盘抽奖", url: "rotate" },
-                { name: "视频播放控件", url: "video" },
-                { name: "导航条", url: "nav" },
-                { name: "弹窗", url: "popup" },
+                { name: "用户列表", url: "swiper" },
+
             ]
         },
         { name: "代码规范", url: "" }

@@ -3,6 +3,17 @@
     position: relative;
 }
 
+.sidebar {
+    width: 250px;
+    &:before {
+        width: 250px;
+    }
+}
+
+.main-content {
+    margin-left: 250px;
+}
+
 .tips-box {
     max-width: 1000px;
     display: block;
@@ -19,6 +30,12 @@
 
 .breadcrumbs-fixed+.page-content {
     padding-top: 49px;
+}
+
+// 修改样式
+.nav-list>li>a {
+    height: 50px;
+    line-height: 50px;
 }
 
 @import './module';
