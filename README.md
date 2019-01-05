@@ -95,14 +95,14 @@ http-server -c-1
 #### 生产开发
 生产环境中开发监听对应的文件修改
 ```
-npm start
+npm run start
 ```
 
 ### 前端发布部署
 
 压缩生产对应的线上文件，生产 `html`  `css`  `image`  `font`  `js`  文件
 ```
-npm build
+npm run build
 ```
 
 -----------------------------
