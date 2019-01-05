@@ -31,8 +31,7 @@
     },
     "scripts": {
         "start": "webpack-dev-server  --hot --inline --color --hot --config ./webpack/webpack.dev.config.js",
-        "build": "webpack --config ./webpack/webpack.prod.config.js",
-        "eject": "react-scripts eject"
+        "build": "webpack --config ./webpack/webpack.prod.config.js"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
