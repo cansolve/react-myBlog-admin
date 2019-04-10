@@ -1,4 +1,5 @@
 import Cache from '../tools/cache';
+import config from '../config';
 
 const initParam = {
     conditions: {},
@@ -14,16 +15,7 @@ const initialState = {
     param: Object.assign({}, initParam),
     dialog: '',
     gritter: {},
-    nav: [{
-            name: "用户管理",
-            url: "",
-            children: [
-                { name: "用户列表", url: "swiper" },
-
-            ]
-        },
-        { name: "代码规范", url: "" }
-    ],
+    nav: config.sideMuem
 };
 
 const functions = {

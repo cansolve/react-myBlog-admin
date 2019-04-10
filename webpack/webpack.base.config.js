@@ -92,8 +92,13 @@ module.exports = {
             template: path.join(__dirname, "../public/index.html")
         }),
         new CopyWebpackPlugin([{
-            from: "./assets/images/",
-            to: "./assets/images/"
-        }])
+                from: "./src/assets/images/",
+                to: "./assets/images/"
+            },
+            {
+                from: "./src/assets/lib/",
+                to: "./assets/lib/"
+            }
+        ])
     ]
 }

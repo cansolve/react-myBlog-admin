@@ -13,7 +13,15 @@
     ],
     "env": {
         "development": {
-            "presets": ["react-hmre"]
+            "presets": ["react-hmre"],
+            "plugins": [["react-transform", {
+                "transforms": [{
+                  "transform": "react-transform-hmr",
+                  "imports": ["react"],
+                  // this is important for Webpack HMR:
+                  "locals": ["module"]
+                }]
+              }]]
         }
     }
 }

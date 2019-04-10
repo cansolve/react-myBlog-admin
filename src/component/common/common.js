@@ -24,7 +24,7 @@ export default class Common extends React.Component {
       navbarFixed_class:'navbar-fixed-top',
       bName: ''
     }
-    Object.assign(this.state);
+    // Object.assign(this.state);
   }
   mediaChange(event) {
     event.preventDefault();
@@ -66,7 +66,6 @@ export default class Common extends React.Component {
     _this.setState({
       bName: val
     })
-    console.log(_this.state);
   }
 
   componentDidMount() {
@@ -75,6 +74,7 @@ export default class Common extends React.Component {
 
   }
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
   }
   render() {
     return (

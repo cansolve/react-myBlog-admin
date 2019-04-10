@@ -33,7 +33,7 @@ class Prev extends React.Component {
     return (
       <li className={_className}>
         <a href={_url} onClick={_onChange}>
-          <i className="icon-double-angle-left"></i>
+          <i className="ace-icon fa fa-angle-double-left"></i>
         </a>
       </li>
     )
@@ -60,7 +60,7 @@ class Next extends React.Component {
     return (
       <li className={_className}>
         <a href={_url} onClick={_onChange}>
-          <i className="icon-double-angle-right"></i>
+          <i className="ace-icon fa fa-angle-double-right"></i>
         </a>
       </li>
     )

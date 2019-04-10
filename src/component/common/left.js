@@ -9,7 +9,6 @@ class ChildrenLi extends React.Component {
     }
   }
   setBreadname(name){
-    
     this.props.getBreadname(name);
   }
   render() {
@@ -88,11 +87,11 @@ class Left extends React.Component {
 
     if (this.state.min) {
       minClass = 'sidebar menu-min ' + this.props.display;
-      iconClass = 'icon-double-angle-right'
+      iconClass = 'ace-save-state ace-icon fa fa-angle-double-right'
     }
     else {
       minClass = 'sidebar ' + this.props.display+this.props.leftFixed;
-      iconClass = 'icon-double-angle-left'
+      iconClass = 'ace-save-state ace-icon fa fa-angle-double-left'
     }
     let nav = this.props.nav || [];
     return (
@@ -106,7 +105,7 @@ class Left extends React.Component {
                 return (
                   <li key={i} className={classValue}>
                     <a href={'#/' + items.url} onClick={this.handleToggle}>
-                      <i className="icon-fire"></i>
+                      <i className="menu-icon fa fa-desktop"></i>
                       <span className="menu-text"> {items.name} </span>
                       <b className="arrow icon-angle-down"></b>
                     </a>
@@ -116,9 +115,9 @@ class Left extends React.Component {
               }
               else {
                 return (
-                  <li key={i}>
+                  <li key={i} onClick={this.getBreadname.bind(this,items.name)}>
                     <a href={'#/' + items.url}>
-                      <i className="icon-fire"></i>
+                      <i className="menu-icon fa fa-desktop"></i>
                       <span className="menu-text"> {items.name} </span>
                     </a>
                   </li>
@@ -129,7 +128,7 @@ class Left extends React.Component {
           }
         </ul>
 
-        <div className="sidebar-collapse" onClick={this.changeMin.bind(this)}>
+        <div className="sidebar-toggle sidebar-collapse" onClick={this.changeMin.bind(this)}>
           <i className={iconClass}></i>
         </div>
       </div>

@@ -2,7 +2,6 @@ import React from 'react';
 
 import Dispatch from '../../dispatch'
 import Common from '../common/common';
-import ReactEcharts from 'echarts-for-react';
 import Fetch from '../../tools/fetch';
 class Index extends React.Component {
   constructor(props) {
@@ -81,9 +80,7 @@ class Index extends React.Component {
 正在开发中，预计近期将上线，敬请期待！
           </div>
         </div>
-        <div className="echart-wrap">
-          <ReactEcharts option={this.state.option} />
-        </div>
+       
       </Common>
     )
   }
